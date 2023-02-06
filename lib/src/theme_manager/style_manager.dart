@@ -22,23 +22,23 @@ TextStyle getWhiteTextStyle({
   FontWeight fontWeight = FontWeightManager.regular,
 }) {
   return _getTextStyle(
-      fontSize, FontFamilyConstant.fontFamily, fontWeight, ColorManger.white);
+      fontSize, FontFamilyConstant.fontFamily, fontWeight, ColorManager.white);
 }
 
 TextStyle getBlack60TextStyle({
   double fontSize = FontSizeManager.f16,
   FontWeight fontWeight = FontWeightManager.regular,
 }) {
-  return _getTextStyle(
-      fontSize, FontFamilyConstant.fontFamily, fontWeight, ColorManger.black60);
+  return _getTextStyle(fontSize, FontFamilyConstant.fontFamily, fontWeight,
+      ColorManager.black60);
 }
 
 TextStyle getBlack30TextStyle({
   double fontSize = FontSizeManager.f16,
   FontWeight fontWeight = FontWeightManager.regular,
 }) {
-  return _getTextStyle(
-      fontSize, FontFamilyConstant.fontFamily, fontWeight, ColorManger.black30);
+  return _getTextStyle(fontSize, FontFamilyConstant.fontFamily, fontWeight,
+      ColorManager.black30);
 }
 
 TextStyle getBlackTextStyle({
@@ -46,5 +46,5 @@ TextStyle getBlackTextStyle({
   FontWeight fontWeight = FontWeightManager.regular,
 }) {
   return _getTextStyle(
-      fontSize, FontFamilyConstant.fontFamily, fontWeight, ColorManger.black);
+      fontSize, FontFamilyConstant.fontFamily, fontWeight, ColorManager.black);
 }
