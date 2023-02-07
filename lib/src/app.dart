@@ -1,3 +1,5 @@
+import 'package:dating_app/src/features/authentication/presentation/sign_up_screen.dart';
+import 'package:dating_app/src/theme_manager/theme_data_manager.dart';
 import 'package:flutter/material.dart';
 
 class AppScreen extends StatelessWidget {
@@ -5,6 +7,14 @@ class AppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Material App',
+      theme: getApplicationThemeData(),
+      initialRoute: SignUpScreen.routeName,
+      routes: {
+        SignUpScreen.routeName: (context) => const SignUpScreen(),
+      },
+    );
   }
 }
