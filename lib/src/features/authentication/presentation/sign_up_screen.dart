@@ -5,6 +5,7 @@ import '../../../common_widgets/banner_widget.dart';
 import '../../../common_widgets/custom_button_widget.dart';
 import '../../../common_widgets/custom_text_button_widget.dart';
 import '../../../common_widgets/custom_text_field_widget.dart';
+import './sign_up_age_job_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const String routeName = '/sign-up';
@@ -31,9 +32,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: AppPadding.p50,
-          horizontal: AppPadding.p24,
+        padding: const EdgeInsets.only(
+          top: AppPadding.p50,
+          left: AppPadding.p24,
+          right: AppPadding.p24,
+          bottom: AppPadding.p12,
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -58,7 +61,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const SizedBox(height: AppSize.s16),
               CustomButtonWidget(
                 title: "Get Started",
-                onTap: () {},
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  SignUpAgeJobScreen.routeName,
+                ),
               ),
               const SizedBox(height: AppSize.s20),
               CustomTextButtonWidget(
