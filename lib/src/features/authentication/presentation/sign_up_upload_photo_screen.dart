@@ -7,6 +7,7 @@ import 'package:dating_app/src/theme_manager/values_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common_widgets/upload_photo_widget.dart';
+import '../../likes_you/presentation/explore_people_screen.dart';
 
 class SignUpUploadPhotoScreen extends StatefulWidget {
   static const String routeName = '/sign-up-upload-photo';
@@ -22,9 +23,10 @@ class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: AppSize.s50,
-          horizontal: AppSize.s24,
+        padding: const EdgeInsets.only(
+          top: AppSize.s50,
+          left: AppSize.s24,
+          right: AppSize.s24,
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -55,7 +57,12 @@ class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
               ),
               CustomTextButtonWidget(
                 title: "Skip for Now",
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    ExplorePeopleScreen.routeName,
+                  );
+                },
               ),
             ],
           ),
