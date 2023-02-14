@@ -1,3 +1,4 @@
+import 'package:dating_app/src/features/authentication/presentation/sign_up_upload_photo_screen.dart';
 import 'package:dating_app/src/theme_manager/values_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -69,7 +70,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const SizedBox(height: AppSize.s20),
               CustomTextButtonWidget(
                 title: "Sign In to My Account",
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    SignUpUploadPhotoScreen.routeName,
+                  );
+                },
               ),
             ],
           ),
