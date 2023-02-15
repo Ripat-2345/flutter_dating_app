@@ -1,4 +1,5 @@
 import 'package:dating_app/src/common_widgets/logo_widget.dart';
+import 'package:dating_app/src/theme_manager/values_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../theme_manager/asset_image_icon_manager.dart';
@@ -14,7 +15,7 @@ class ExplorePeopleAppBarWidget extends StatelessWidget {
         Container(
           width: 55.0,
           height: 55.0,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
               image: AssetImage(
@@ -24,18 +25,18 @@ class ExplorePeopleAppBarWidget extends StatelessWidget {
             ),
           ),
         ),
-        LogoWidget(),
+        const LogoWidget(),
         Container(
           width: 24.0,
           height: 24.0,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
                 "${AssetImageIconManager.assetPath}/icon_notification.png",
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

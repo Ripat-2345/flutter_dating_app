@@ -2,6 +2,7 @@ import 'package:dating_app/src/theme_manager/values_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common_widgets/explore_people_app_bar_widget.dart';
+import '../../../common_widgets/match_card_widget.dart';
 
 class ExplorePeopleScreen extends StatelessWidget {
   static const String routeName = '/explore-people';
@@ -18,7 +19,15 @@ class ExplorePeopleScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            ExplorePeopleAppBarWidget(),
+            const ExplorePeopleAppBarWidget(),
+            const SizedBox(height: AppSize.s50),
+            Expanded(
+              child: Column(
+                children: [
+                  Expanded(child: MatchCardWidget()),
+                ],
+              ),
+            ),
           ],
         ),
       ),
