@@ -2,6 +2,7 @@ import 'package:dating_app/src/theme_manager/values_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common_widgets/explore_people_app_bar_widget.dart';
+import '../../../common_widgets/explore_people_button_widget.dart';
 import '../../../common_widgets/match_card_widget.dart';
 
 class ExplorePeopleScreen extends StatelessWidget {
@@ -24,7 +25,11 @@ class ExplorePeopleScreen extends StatelessWidget {
             Expanded(
               child: Column(
                 children: [
-                  Expanded(child: MatchCardWidget()),
+                  Expanded(
+                    child: MatchCardWidget(),
+                  ),
+                  const SizedBox(height: AppSize.s50),
+                  ExplorePeopleButtonWidget(),
                 ],
               ),
             ),
