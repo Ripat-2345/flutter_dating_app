@@ -5,6 +5,8 @@ import 'package:dating_app/src/theme_manager/style_manager.dart';
 import 'package:dating_app/src/theme_manager/values_manager.dart';
 import 'package:flutter/material.dart';
 
+import '../features/likes_you/presentation/people_profile_screen.dart';
+
 class PeopleLovedCardWidget extends StatelessWidget {
   const PeopleLovedCardWidget({super.key});
 
@@ -14,36 +16,41 @@ class PeopleLovedCardWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: AppPadding.p22,
       ),
-      child: Container(
-        margin: const EdgeInsets.only(bottom: AppMargin.m18),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppSize.s20),
-          color: ColorManager.secondary,
-        ),
-        child: ListTile(
-          contentPadding: const EdgeInsets.all(10),
-          leading: Container(
-            width: 70,
-            height: 70,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                    "${AssetImageIconManager.assetPath}/people_love3_image.png"),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, PeopleProfileScreen.routeName);
+        },
+        child: Container(
+          margin: const EdgeInsets.only(bottom: AppMargin.m18),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppSize.s20),
+            color: ColorManager.secondary,
+          ),
+          child: ListTile(
+            contentPadding: const EdgeInsets.all(10),
+            leading: Container(
+              width: 70,
+              height: 70,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(
+                      "${AssetImageIconManager.assetPath}/people_love3_image.png"),
+                ),
               ),
             ),
-          ),
-          title: Text(
-            "Ismirada",
-            style: getWhiteTextStyle(
-              fontSize: FontSizeManager.f20,
-              fontWeight: FontWeightManager.semiBold,
+            title: Text(
+              "Ismirada",
+              style: getWhiteTextStyle(
+                fontSize: FontSizeManager.f20,
+                fontWeight: FontWeightManager.semiBold,
+              ),
             ),
-          ),
-          subtitle: Text(
-            '24, Doctor',
-            style: getGrey60TextStyle(),
+            subtitle: Text(
+              '24, Doctor',
+              style: getGrey60TextStyle(),
+            ),
           ),
         ),
       ),

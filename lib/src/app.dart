@@ -6,6 +6,7 @@ import 'features/authentication/presentation/sign_up_age_job_screen.dart';
 import 'features/authentication/presentation/sign_up_upload_photo_screen.dart';
 import 'features/likes_you/presentation/explore_people_screen.dart';
 import 'features/likes_you/presentation/people_loved_screen.dart';
+import 'features/likes_you/presentation/people_profile_screen.dart';
 
 class AppScreen extends StatelessWidget {
   const AppScreen({super.key});
@@ -24,6 +25,7 @@ class AppScreen extends StatelessWidget {
             const SignUpUploadPhotoScreen(),
         ExplorePeopleScreen.routeName: (context) => const ExplorePeopleScreen(),
         PeopleLovedScreen.routeName: (context) => const PeopleLovedScreen(),
+        PeopleProfileScreen.routeName: (context) => const PeopleProfileScreen(),
       },
     );
   }
