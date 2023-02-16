@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:dating_app/src/common_widgets/custom_button_widget.dart';
 import 'package:dating_app/src/common_widgets/custom_text_button_widget.dart';
 import 'package:dating_app/src/common_widgets/logo_and_tagline_widget.dart';
 import 'package:dating_app/src/theme_manager/font_manager.dart';
 import 'package:dating_app/src/theme_manager/style_manager.dart';
 import 'package:dating_app/src/theme_manager/values_manager.dart';
+import 'package:dating_app/src/utils/image_picker_util.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common_widgets/upload_photo_widget.dart';
@@ -19,6 +22,17 @@ class SignUpUploadPhotoScreen extends StatefulWidget {
 }
 
 class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
+  File? image;
+
+  void getImageProfile(GetImageFrom source) async {
+    final result = await ImagePickerUtil.getImage(source);
+    if (result != null) {
+      setState(() {
+        image = File(result.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +45,46 @@ class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              LogoAndTaglineWidget(),
+              const LogoAndTaglineWidget(),
               const SizedBox(height: AppSize.s50),
-              UploadPhotoWidget(),
+              GestureDetector(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return Container(
+                        padding: const EdgeInsets.all(AppPadding.p24),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                getImageProfile(GetImageFrom.camera);
+                              },
+                              icon: Icon(
+                                Icons.camera,
+                                size: AppSize.s50,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                getImageProfile(GetImageFrom.gallery);
+                              },
+                              icon: Icon(
+                                Icons.photo,
+                                size: AppSize.s50,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
+                child: UploadPhotoWidget(
+                  image: image,
+                ),
+              ),
               const SizedBox(height: 53.0),
               Text(
                 "Andri Mania",
