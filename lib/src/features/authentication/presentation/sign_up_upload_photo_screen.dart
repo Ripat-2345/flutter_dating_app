@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dating_app/src/common_widgets/custom_button_widget.dart';
 import 'package:dating_app/src/common_widgets/custom_text_button_widget.dart';
 import 'package:dating_app/src/common_widgets/logo_and_tagline_widget.dart';
+import 'package:dating_app/src/features/authentication/domain/user_account.dart';
 import 'package:dating_app/src/theme_manager/font_manager.dart';
 import 'package:dating_app/src/theme_manager/style_manager.dart';
 import 'package:dating_app/src/theme_manager/values_manager.dart';
@@ -35,6 +36,8 @@ class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    UserAccount userAccount =
+        ModalRoute.of(context)!.settings.arguments as UserAccount;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
@@ -87,7 +90,7 @@ class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
               ),
               const SizedBox(height: 53.0),
               Text(
-                "Andri Mania",
+                userAccount.fullname,
                 style: getWhiteTextStyle(
                   fontSize: FontSizeManager.f22,
                   fontWeight: FontWeightManager.semiBold,
@@ -95,7 +98,7 @@ class _SignUpUploadPhotoScreenState extends State<SignUpUploadPhotoScreen> {
               ),
               const SizedBox(height: AppSize.s4),
               Text(
-                "22, Lawyer",
+                "${userAccount.age}, ${userAccount.occupation}",
                 style: getBlack60TextStyle(),
               ),
               const SizedBox(height: 240.0),

@@ -62,9 +62,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
               const SizedBox(height: AppSize.s16),
               CustomButtonWidget(
                 title: "Get Started",
-                onTap: () => Navigator.pushNamed(
+                onTap: () => Navigator.push(
                   context,
-                  SignUpAgeJobScreen.routeName,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return SignUpAgeJobScreen(
+                        fullname: nameController.text,
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
+                    },
+                  ),
                 ),
               ),
               const SizedBox(height: AppSize.s20),

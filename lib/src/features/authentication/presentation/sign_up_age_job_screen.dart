@@ -1,3 +1,5 @@
+import 'package:dating_app/src/features/authentication/domain/user_account.dart';
+import 'package:dating_app/src/features/authentication/presentation/sign_up_upload_photo_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../common_widgets/banner_widget.dart';
@@ -7,7 +9,16 @@ import '../../../theme_manager/values_manager.dart';
 
 class SignUpAgeJobScreen extends StatefulWidget {
   static const String routeName = '/sign-up-age-job';
-  const SignUpAgeJobScreen({super.key});
+  final String fullname;
+  final String email;
+  final String password;
+
+  const SignUpAgeJobScreen({
+    required this.fullname,
+    required this.email,
+    required this.password,
+    super.key,
+  });
 
   @override
   State<SignUpAgeJobScreen> createState() => _SignUpAgeJobScreenState();
@@ -51,7 +62,20 @@ class _SignUpAgeJobScreenState extends State<SignUpAgeJobScreen> {
               const SizedBox(height: 117.0),
               CustomButtonWidget(
                 title: "Continue Sign Up",
-                onTap: () {},
+                onTap: () {
+                  UserAccount userAccount = UserAccount(
+                    fullname: widget.fullname,
+                    email: widget.email,
+                    password: widget.password,
+                    occupation: jobController.text,
+                    age: ageController.text,
+                  );
+                  Navigator.pushNamed(
+                    context,
+                    SignUpUploadPhotoScreen.routeName,
+                    arguments: userAccount,
+                  );
+                },
               ),
             ],
           ),
