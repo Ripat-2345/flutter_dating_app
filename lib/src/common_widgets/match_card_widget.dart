@@ -2,10 +2,13 @@ import 'package:dating_app/src/theme_manager/asset_image_icon_manager.dart';
 import 'package:dating_app/src/theme_manager/color_manager.dart';
 import 'package:flutter/material.dart';
 
+import '../features/likes_you/domain/user.dart';
 import 'glass_card_widget.dart';
 
 class MatchCardWidget extends StatelessWidget {
-  const MatchCardWidget({super.key});
+  const MatchCardWidget({super.key, required this.user});
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +24,17 @@ class MatchCardWidget extends StatelessWidget {
               color: ColorManager.secondary,
               strokeAlign: BorderSide.strokeAlignInside,
             ),
-            image: const DecorationImage(
+            image: DecorationImage(
               fit: BoxFit.cover,
               image: AssetImage(
-                "${AssetImageIconManager.assetPath}/people_love2_image.png",
+                user.imagePath,
               ),
             ),
           ),
         ),
-        const GlassCardWidget(),
+        GlassCardWidget(
+          user: user,
+        ),
       ],
     );
   }

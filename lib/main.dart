@@ -1,4 +1,5 @@
 import 'package:dating_app/src/features/authentication/presentation/bloc/auth_bloc.dart';
+import 'package:dating_app/src/features/likes_you/presentation/bloc/explore_people_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AuthBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ExplorePeopleBloc(),
         ),
       ],
       child: const AppScreen(),
