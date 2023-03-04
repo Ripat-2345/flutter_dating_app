@@ -1,3 +1,4 @@
+import 'package:dating_app/src/features/likes_you/presentation/explore_people_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../theme_manager/asset_image_icon_manager.dart';
@@ -8,8 +9,10 @@ import 'match_button_widget.dart';
 
 class ProfileDetailImageWidget extends StatelessWidget {
   const ProfileDetailImageWidget({
+    required this.imagePath,
     super.key,
   });
+  final String imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class ProfileDetailImageWidget extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.cover,
               image: AssetImage(
-                "${AssetImageIconManager.assetPath}/people_love1_image.png",
+                imagePath,
               ),
             ),
           ),
@@ -38,7 +41,9 @@ class ProfileDetailImageWidget extends StatelessWidget {
               MatchButtonWidget(
                 dimension: 24,
                 iconPath: 'icon_arrow_left.png',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pop(context);
+                },
               ),
               Text(
                 "Lover Profile\nDetail",
@@ -51,7 +56,13 @@ class ProfileDetailImageWidget extends StatelessWidget {
               MatchButtonWidget(
                 dimension: 24,
                 iconPath: 'icon_close_circle.png',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    ExplorePeopleScreen.routeName,
+                    (route) => false,
+                  );
+                },
               ),
             ],
           ),

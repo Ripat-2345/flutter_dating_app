@@ -5,11 +5,12 @@ import 'package:dating_app/src/theme_manager/style_manager.dart';
 import 'package:dating_app/src/theme_manager/values_manager.dart';
 import 'package:flutter/material.dart';
 
+import '../features/likes_you/domain/user.dart';
 import '../features/likes_you/presentation/people_profile_screen.dart';
 
 class PeopleLovedCardWidget extends StatelessWidget {
-  const PeopleLovedCardWidget({super.key});
-
+  const PeopleLovedCardWidget({required this.user, super.key});
+  final User user;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,7 +19,11 @@ class PeopleLovedCardWidget extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, PeopleProfileScreen.routeName);
+          Navigator.pushNamed(
+            context,
+            PeopleProfileScreen.routeName,
+            arguments: user,
+          );
         },
         child: Container(
           margin: const EdgeInsets.only(bottom: AppMargin.m18),
@@ -35,20 +40,19 @@ class PeopleLovedCardWidget extends StatelessWidget {
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(
-                      "${AssetImageIconManager.assetPath}/people_love3_image.png"),
+                  image: AssetImage(user.imagePath),
                 ),
               ),
             ),
             title: Text(
-              "Ismirada",
+              user.fullName,
               style: getWhiteTextStyle(
                 fontSize: FontSizeManager.f20,
                 fontWeight: FontWeightManager.semiBold,
               ),
             ),
             subtitle: Text(
-              '24, Doctor',
+              '${user.age}, ${user.occupation}',
               style: getGrey60TextStyle(),
             ),
           ),

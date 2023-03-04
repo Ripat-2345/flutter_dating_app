@@ -1,4 +1,5 @@
 import 'package:dating_app/src/common_widgets/custom_button_widget.dart';
+import 'package:dating_app/src/features/likes_you/domain/user.dart';
 import 'package:dating_app/src/theme_manager/asset_image_icon_manager.dart';
 import 'package:dating_app/src/theme_manager/values_manager.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +13,15 @@ class PeopleProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = ModalRoute.of(context)?.settings.arguments as User;
     return Scaffold(
       body: Column(
         children: [
-          ProfileDetailImageWidget(),
+          ProfileDetailImageWidget(
+            imagePath: user.imagePath,
+          ),
           const SizedBox(height: 30),
-          PeopleIdentityWidget(),
+          PeopleIdentityWidget(user: user),
           Container(
             height: 80,
             margin: const EdgeInsets.only(
@@ -34,7 +38,7 @@ class PeopleProfileScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(
                       AppSize.s18,
                     ),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage(
                         "${AssetImageIconManager.assetPath}/hobby1_image.png",

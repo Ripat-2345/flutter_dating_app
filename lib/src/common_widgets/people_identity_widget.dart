@@ -1,3 +1,4 @@
+import 'package:dating_app/src/features/likes_you/domain/user.dart';
 import 'package:flutter/material.dart';
 
 import '../theme_manager/font_manager.dart';
@@ -6,8 +7,10 @@ import '../theme_manager/values_manager.dart';
 
 class PeopleIdentityWidget extends StatelessWidget {
   const PeopleIdentityWidget({
+    required this.user,
     super.key,
   });
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +20,19 @@ class PeopleIdentityWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Shayna',
+            user.fullName,
             style: getWhiteTextStyle(
               fontSize: FontSizeManager.f28,
               fontWeight: FontWeightManager.semiBold,
             ),
           ),
           Text(
-            '22 lawyer',
+            '${user.age}, ${user.occupation}',
             style: getBlackTextStyle(),
           ),
           const SizedBox(height: AppSize.s16),
           Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            user.description,
             style: getWhiteTextStyle(),
           ),
           const SizedBox(height: AppSize.s16),

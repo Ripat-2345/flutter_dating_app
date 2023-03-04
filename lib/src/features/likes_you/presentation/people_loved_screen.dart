@@ -37,7 +37,7 @@ class _PeopleLovedScreenState extends State<PeopleLovedScreen> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
               size: 30,
             ),
@@ -57,14 +57,23 @@ class _PeopleLovedScreenState extends State<PeopleLovedScreen> {
               }
               if (state is PeopleLovedLoaded) {
                 final users = state.userMatch;
-                return Expanded(
-                  child: ListView.builder(
-                    itemBuilder: (context, index) {
-                      return PeopleLovedCardWidget();
-                    },
-                    itemCount: users.length,
-                  ),
-                );
+                return users.isEmpty
+                    ? Center(
+                        child: Text(
+                          "No Data User Match",
+                          style: getWhiteTextStyle(),
+                        ),
+                      )
+                    : Expanded(
+                        child: ListView.builder(
+                          itemBuilder: (context, index) {
+                            return PeopleLovedCardWidget(
+                              user: users[index],
+                            );
+                          },
+                          itemCount: users.length,
+                        ),
+                      );
               }
               return Container();
             },
